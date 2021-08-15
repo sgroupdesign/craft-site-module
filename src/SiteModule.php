@@ -2,6 +2,7 @@
 namespace sgroup\sitemodule;
 
 use sgroup\sitemodule\base\Module;
+use sgroup\sitemodule\base\PluginTrait;
 use sgroup\sitemodule\twigextensions\Extension;
 use sgroup\sitemodule\variables\Variable;
 
