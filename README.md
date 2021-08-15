@@ -141,7 +141,7 @@ This has the same options as `getImg()` except the `$attributes`. This will retu
 <img class="img-cover" src=".../image.jpg" width="400" height="400" alt="Title" />
 ```
 
-You'll notice on the instances were using `lazyloading` the need to manually include `lazyload` because we're rendering the classes on our own. Alternatively, you should do:
+You'll notice on the instances we're using `lazyloading` the need to manually include the `lazyload` class because we're rendering the classes on our own. Alternatively, you could do:
 
 ```twig
 {% set attributes = getImgAttr(asset, 'small', false, false) | merge({
@@ -154,7 +154,7 @@ You'll notice on the instances were using `lazyloading` the need to manually inc
 This would combine the `img-cover` class in the template and the `lazyload` class from the function.
 
 ### `getBg()`
-This behaves in almost the exact same manner as `getImg()` but return a `<div>` element.
+This behaves in almost the exact same manner as `getImg()` but returns a `<div>` element.
 
 ```twig
 {# Renders a banner image #}
