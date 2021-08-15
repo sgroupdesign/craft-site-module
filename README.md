@@ -46,7 +46,7 @@ Given an asset, this will render an `<iframe>` or `<video>`. This handles both E
 You can also pass in attributes to be used either in the URL (as URL-encoded params) or in `<video>` attributes. You can include any attribute, but some worth mentioning:
 
 | Option | Description
-| - | - | - | -
+| - | -
 | `muted` | Whether the video should be muted.
 | `autoplay` | Whether the video should autoplay.
 | `controls` | Whether the video controls should be shown.
@@ -55,7 +55,7 @@ You can also pass in attributes to be used either in the URL (as URL-encoded par
 This will return an `<img>` tag, pre-configured with a bunch of options.
 
 | Option | Description
-| - | - | - | -
+| - | -
 | `image` | The asset.
 | `transform` | Either an array (for dynamic transform) or string for the transform.
 | `lazyload` | Whether the the image should be lazyloaded.
