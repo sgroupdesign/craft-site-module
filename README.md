@@ -182,6 +182,7 @@ This behaves in almost the exact same manner as `getImg()` but returns a `<div>`
 {{ getBg(asset, 'banner', true, { class: 'img-cover aspect aspect-21x9' }, false) }}
 
 <div class="lazyload img-cover aspect aspect-21x9" data-bg="../image.jpg"></div>
+```
 
 ### `getBgAttr()`
 This behaves in almost the exact same manner as `getImgAttr()`, just with different attributes.
