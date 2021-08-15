@@ -71,22 +71,30 @@ By default, we use `srcset` to provide `['1x', '1.5x', '2x', '3x']` sizes.
 {{ getImg(asset, 'small', false, [], false) }}
 
 <img src=".../image.jpg" srcset=".../image.jpg, .../image.jpg 1.5x, .../image.jpg 2x, .../image.jpg 3x" width="400" height="400" alt="Title" />
+```
 
+```twig
 {# Renders a small image, lazyloaded #}
 {{ getImg(asset, 'small', true) }}
 
 <img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MDB2NDAwSDB6IiBmaWxsPSJub25lIj48L3BhdGg+PC9zdmc+" width="400" height="400" alt="Title" data-src=".../image.jpg" data-srcset=".../image.jpg, .../image.jpg 1.5x, .../image.jpg 2x, .../image.jpg 3x" />
+```
 
+```twig
 {# Renders a small image with extra classes and attributes #}
 {{ getImg(asset, 'small', true, { class: ['testing', 'some'], 'data-attr': 'val' }) }}
 
 <img class="lazyload testing some" data-attr="val" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MDB2NDAwSDB6IiBmaWxsPSJub25lIj48L3BhdGg+PC9zdmc+" width="400" height="400" alt="Title" data-src=".../image.jpg" />
+```
 
+```twig
 {# Renders a small image, lazyloaded, no `srcset` #}
 {{ getImg(asset, 'small', true, [], false) }}
 
 <img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MDB2NDAwSDB6IiBmaWxsPSJub25lIj48L3BhdGg+PC9zdmc+" width="400" height="400" alt="Title" data-src=".../image.jpg" />
+```
 
+```twig
 {# Renders a small image - no `srcset` #}
 {{ getImg(asset, 'small', false, [], false) }}
 
@@ -103,22 +111,30 @@ This has the same options as `getImg()` except the `$attributes`. This will retu
 <img class="img-cover" {{ attr(getImgAttr(asset, 'small')) }} />
 
 <img class="img-cover" src=".../image.jpg" srcset=".../image.jpg, .../image.jpg 1.5x, .../image.jpg 2x, .../image.jpg 3x" width="400" height="400" alt="Title" />
+```
 
+```twig
 {# Renders a small image, lazyloaded #}
 <img class="lazyload img-cover" {{ attr(getImgAttr(asset, 'small', true)) }} />
 
 <img class="lazyload img-cover" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MDB2NDAwSDB6IiBmaWxsPSJub25lIj48L3BhdGg+PC9zdmc+" width="400" height="400" alt="Title" data-src=".../image.jpg" data-srcset=".../image.jpg, .../image.jpg 1.5x, .../image.jpg 2x, .../image.jpg 3x" />
+```
 
+```twig
 {# Renders a small image, lazyloaded, no `srcset` #}
 <img class="lazyload img-cover" {{ attr(getImgAttr(asset, 'small', true, false)) }} />
 
 <img class="lazyload img-cover" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MDB2NDAwSDB6IiBmaWxsPSJub25lIj48L3BhdGg+PC9zdmc+" width="400" height="400" alt="Title" data-src=".../image.jpg" />
+```
 
+```twig
 {# Renders a small image #}
 <img class="img-cover" {{ attr(getImgAttr(asset, 'small', false)) }} />
 
 <img class="img-cover" src=".../image.jpg" srcset=".../image.jpg, .../image.jpg 1.5x, .../image.jpg 2x, .../image.jpg 3x" width="400" height="400" alt="Title" />
+```
 
+```twig
 {# Renders a small image, no `srcset` #}
 <img class="img-cover" {{ attr(getImgAttr(asset, 'small', false, false)) }} />
 
@@ -145,17 +161,23 @@ This behaves in almost the exact same manner as `getImg()` but return a `<div>` 
 {{ getBg(asset, 'banner', false, { class: 'img-cover aspect aspect-21x9' }) }}
 
 <div class="img-cover aspect aspect-21x9" style="background-image: url('../image.jpg');"></div>
+```
 
+```twig
 {# Renders a banner image, lazyloaded #}
 {{ getBg(asset, 'banner', true, { class: 'img-cover aspect aspect-21x9' }) }}
 
 <div class="lazyload img-cover aspect aspect-21x9" data-bgset="../image.jpg, ../image.jpg 1.5x, ../image.jpg 2x, ../image.jpg 3x"></div>
+```
 
+```twig
 {# Renders a banner image, no `srcset` #}
 {{ getBg(asset, 'banner', false, { class: 'img-cover aspect aspect-21x9' }, false) }}
 
 <div class="img-cover aspect aspect-21x9" style="background-image: url('../image.jpg');"></div>
+```
 
+```twig
 {# Renders a banner image, lazyloaded, no `srcset` #}
 {{ getBg(asset, 'banner', true, { class: 'img-cover aspect aspect-21x9' }, false) }}
 
@@ -167,13 +189,19 @@ This behaves in almost the exact same manner as `getImgAttr()`, just with differ
 ```twig
 {% set attributes = getBgAttr(asset, 'banner', false) %}
 <div class="img-cover aspect aspect-21x9" {{ attr(attributes) }}></div>
+```
 
+```twig
 {% set attributes = getBgAttr(asset, 'banner', true) %}
 <div class="lazyload img-cover aspect aspect-21x9" {{ attr(attributes) }}></div>
+```
 
+```twig
 {% set attributes = getBgAttr(asset, 'banner', false, false) %}
 <div class="img-cover aspect aspect-21x9" {{ attr(attributes) }}></div>
+```
 
+```twig
 {% set attributes = getBgAttr(asset, 'banner', true, false) %}
 <div class="lazyload img-cover aspect aspect-21x9" {{ attr(attributes) }}></div>
 ```
