@@ -7,12 +7,15 @@ use sgroup\sitemodule\fieldlayoutelements\Note;
 use sgroup\sitemodule\fieldlayoutelements\Spacer;
 use sgroup\sitemodule\twigextensions\Extension;
 use sgroup\sitemodule\variables\Variable;
+use sgroup\sitemodule\web\assets\CpJs;
 
 use Craft;
 use craft\events\DefineFieldLayoutElementsEvent;
+use craft\events\TemplateEvent;
 use craft\models\FieldLayout;
 use craft\web\Application;
 use craft\web\twig\variables\CraftVariable;
+use craft\web\View;
 
 use yii\base\Event;
 
@@ -34,6 +37,7 @@ class SiteModule extends Module
         self::$plugin = $this;
 
         $this->_checkOffline();
+        $this->_registerCpJs();
         $this->_setPluginComponents();
         $this->_registerTwigExtensions();
         $this->_registerFieldLayoutElements();
@@ -53,6 +57,21 @@ class SiteModule extends Module
         if ((Craft::$app->getConfig()->general->isOffline ?? null)) {
             exit();
         }
+    }
+
+    private function _registerCpJs()
+    {
+        // If not control panel request, bail
+        if (!Craft::$app->getRequest()->getIsCpRequest()) {
+            return;
+        }
+
+        // Load JS before template is rendered
+        Event::on(View::class, View::EVENT_BEFORE_RENDER_TEMPLATE, function(TemplateEvent $event) {
+            Craft::setAlias('@sgroup/sitemodule', __dir__);
+            
+            Craft::$app->getView()->registerAssetBundle(CpJs::class);
+        });
     }
 
     private function _registerTwigExtensions()
