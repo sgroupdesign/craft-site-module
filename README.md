@@ -51,7 +51,7 @@ You can also pass in attributes to be used either in the URL (as URL-encoded par
 | `autoplay` | Whether the video should autoplay.
 | `controls` | Whether the video controls should be shown.
 
-### `getImg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'auto')`
+### `getImg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default')`
 This will return an `<img>` tag, pre-configured with a bunch of options.
 
 | Option | Description
@@ -68,7 +68,7 @@ By default, we use `srcset` to provide `['1x', '1.5x', '2x', '3x']` sizes.
 {% set asset = craft.assets.id(46).one() %}
 
 {# Renders a small image #}
-{{ getImg(asset, 'small', false, [], false) }}
+{{ getImg(asset, 'small') }}
 
 <img src=".../image.jpg" srcset=".../image.jpg, .../image.jpg 1.5x, .../image.jpg 2x, .../image.jpg 3x" width="400" height="400" alt="Title" />
 ```
@@ -99,6 +99,20 @@ By default, we use `srcset` to provide `['1x', '1.5x', '2x', '3x']` sizes.
 {{ getImg(asset, 'small', false, [], false) }}
 
 <img src=".../image.jpg" width="400" height="400" alt="Title" />
+```
+
+```twig
+{# Using an object instead of a transform handle #}
+{{ getImg(asset, { mode: 'crop', width: 100, height: 200 }) }}
+
+<img src=".../image.jpg" width="100" height="200" alt="Title" />
+```
+
+#### Focal point
+If a focal point is defined on the image, it'll be output via inline style rules.
+
+```twig
+<img src=".../image.jpg" style="object-fit: cover; object-position: 86.7% 85.88%;" />
 ```
 
 ### `getImgAttr()`
@@ -182,6 +196,13 @@ This behaves in almost the exact same manner as `getImg()` but returns a `<div>`
 {{ getBg(asset, 'banner', true, { class: 'img-cover aspect aspect-21x9' }, false) }}
 
 <div class="lazyload img-cover aspect aspect-21x9" data-bg="../image.jpg"></div>
+```
+
+#### Focal point
+If a focal point is defined on the image, it'll be output via inline style rules.
+
+```twig
+<div style="background-image: url('../image.jpg'); background-position: 86.7% 85.88%;"></div>
 ```
 
 ### `getBgAttr()`

@@ -109,10 +109,10 @@ class Extension extends AbstractExtension
         }
     }
 
-    public function getImgAttr($image, $transform = null, $lazyload = false, $sizes = 'auto')
+    public function getImgAttr($image, $transform = null, $lazyload = false, $sizes = 'default')
     {
         // Set some sane defaults for sizes
-        if ($sizes === 'auto') {
+        if ($sizes === 'default') {
             $sizes = ['1x', '1.5x', '2x', '3x'];
         }
 
@@ -137,11 +137,18 @@ class Extension extends AbstractExtension
             ];
         }
 
+        // Get focal point values
+        $focalPoint = $image->focalPoint ?? [];
+
         // Return the defaults + settings above + attributes
-        return array_merge([
+        return array_merge_recursive([
             'width' => $image->getWidth(),
             'height' => $image->getHeight(),
             'alt' => $image->title,
+            'style' => ($focalPoint ? [
+                'object-fit' => 'cover',
+                'object-position' => ($focalPoint['x'] * 100) . '% ' . ($focalPoint['y'] * 100) . '%',
+            ] : null),
         ], $attr);
     }
 
@@ -173,16 +180,28 @@ class Extension extends AbstractExtension
 
         // Handle lazyloading classes a little differently
         if ($lazyload) {
-            return [
+            $attr = [
                 'class' => 'lazyload',
                 'data-bg' => $sizes ? false : $image->getUrl(),
                 'data-bgset' => $sizes ? $image->getSrcset($sizes) : false,
             ];
+        } else {
+            $attr = [
+                'style' => [
+                    'background-image' => 'url("' . $image->getUrl() . '")',
+                ],
+            ];
         }
 
-        return [
-            'style' => 'background-image: url("' . $image->getUrl() . '");',
-        ];
+        // Get focal point values
+        $focalPoint = $image->focalPoint ?? [];
+
+        // Return the defaults + settings above + attributes
+        return array_merge_recursive([
+            'style' => ($focalPoint ? [
+                'background-position' => ($focalPoint['x'] * 100) . '% ' . ($focalPoint['y'] * 100) . '%',
+            ] : null),
+        ], $attr);
     }
 
     public function getBg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default')
