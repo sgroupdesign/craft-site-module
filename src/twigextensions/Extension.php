@@ -145,7 +145,7 @@ class Extension extends AbstractExtension
         ], $attr);
     }
 
-    public function getImg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'auto')
+    public function getImg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default')
     {
         // Get all the generated attributes to make a correct tag
         $attr = $this->getImgAttr($image, $transform, $lazyload, $sizes);
@@ -158,10 +158,10 @@ class Extension extends AbstractExtension
         return Template::raw($html);
     }
 
-    public function getBgAttr($image, $transform = null, $lazyload = false, $sizes = 'auto')
+    public function getBgAttr($image, $transform = null, $lazyload = false, $sizes = 'default')
     {
         // Set some sane defaults for sizes
-        if ($sizes === 'auto') {
+        if ($sizes === 'default') {
             $sizes = ['1x', '1.5x', '2x', '3x'];
         }
 
@@ -185,7 +185,7 @@ class Extension extends AbstractExtension
         ];
     }
 
-    public function getBg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'auto')
+    public function getBg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default')
     {
         // Get all the generated attributes to make a correct tag
         $attr = $this->getBgAttr($image, $transform, $lazyload, $sizes);
