@@ -16,10 +16,27 @@ return [
 ];
 ```
 
-## Vite
+## Vite & Resources
 Adds a `@resource` alias for use in templates. This will resolve to either `@webroot/../resources` if the dev server is running, or `@webroot/dist` if not. The We store our static asset files outside of the webroot.
 
 We also provide a `resource()` Twig function that does a similar thing, but resolves to your Vite plugin settings. `devServerPublic` if the dev server is running, or `serverPublic` if not. In practice this resolves to `http://localhost:3000/` and `/dist` respectively.
+
+### Resources in Twig
+Through these, you'll be able to refer to resources like JS, CSS, images and fonts - anything in your `/resources` folder in your templates. For example, a common scenario is wanting to include images in your Twig templates. You can use the following options to acheieve this.
+
+```twig
+{# Use the `@resources` alias #}
+<img src="{{ getAlias('@resource/img/logo.png') }}">
+
+{# Or use the `resource()` Twig function #}
+<img src="{{ resource('/img/logo.png') }}">
+```
+
+If you need to inline an SVG, it's encouraged to use the [`svg()`](https://craftcms.com/docs/3.x/dev/functions.html#svg) Twig function. With this, your only option is to use an alias.
+
+```twig
+{{ svg('@resource/img/logo.svg') }}
+```
 
 ## Base module
 Yii's modules are pretty slim, and we loose a bunch of boilerplating that Craft plugins get for free. We add this in `base/Module`. Every Yii module for a project you create should extend this **not** Yii's module class.
