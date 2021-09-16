@@ -26,7 +26,7 @@ Through these, you'll be able to refer to resources like JS, CSS, images and fon
 
 ```twig
 {# Use the `@resources` alias #}
-<img src="{{ getAlias('@resource/img/logo.png') }}">
+<img src="{{ alias('@resource/img/logo.png') }}">
 
 {# Or use the `resource()` Twig function #}
 <img src="{{ resource('/img/logo.png') }}">
