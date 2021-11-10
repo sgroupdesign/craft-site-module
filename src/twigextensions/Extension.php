@@ -57,13 +57,13 @@ class Extension extends AbstractExtension
         return 'data:image/svg+xml;base64,' . base64_encode($src);
     }
 
-    public function getFormattedPhone($value)
+    public function getFormattedPhone($phone)
     {
         // Strip out any non-numbers
-        $formattedPhone = str_replace('/[^0-9]/', '', $phone);
+        $formattedPhone = preg_replace('/[^0-9]/', '', $phone);
 
         // Format area code, and prepend '+61'
-        $formattedPhone = str_replace('/^0/', '+61', $formattedPhone);
+        $formattedPhone = preg_replace('/^0/', '+61', $formattedPhone);
 
         return $formattedPhone;
     }
