@@ -1,7 +1,7 @@
 {
     "name": "sgroup/site-module",
     "description": "A base module for S. projets and other modules to extend from for Craft CMS development.",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "homepage": "https://github.com/sgroupdesign/craft-site-module",
     "license": "MIT",
     "keywords": [

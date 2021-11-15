@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.6 - 2021-11-15
+
+- Fix issue with `getFormattedPhone()` argument name
+- Fix use of `str_replace()` instead of `preg_replace()` for regex replacement
+
 ## 1.0.5 - 2021-08-24
 
 - Add focal point handling to `getImg()` and `getBg()`.
