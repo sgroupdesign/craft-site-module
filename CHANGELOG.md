@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.8 - 2021-12-12
+
+- Fix PluginTrait error with module.
+
 ## 1.0.7 - 2021-12-12
 
 - Fix PluginTrait error with module.
