@@ -1,7 +1,7 @@
 <?php
 namespace sgroup\sitemodule\services;
 
-use sgroup\sitemodule\SiteModule;
+use modules\SiteModule;
 
 use Craft;
 use craft\base\Component;

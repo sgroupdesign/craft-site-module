@@ -21,12 +21,6 @@ use yii\base\Event;
 
 class SiteModule extends Module
 {
-    // Traits
-    // =========================================================================
-
-    use PluginTrait;
-
-
     // Public Methods
     // =========================================================================
 
@@ -34,11 +28,8 @@ class SiteModule extends Module
     {
         parent::init();
 
-        self::$plugin = $this;
-
         $this->_checkOffline();
         $this->_registerCpJs();
-        $this->_setPluginComponents();
         $this->_registerTwigExtensions();
         $this->_registerFieldLayoutElements();
 
