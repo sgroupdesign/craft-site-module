@@ -1,9 +1,13 @@
 # Changelog
 
+## 1.0.7 - 2021-12-12
+
+- Fix PluginTrait error with module.
+
 ## 1.0.6 - 2021-11-15
 
-- Fix issue with `getFormattedPhone()` argument name
-- Fix use of `str_replace()` instead of `preg_replace()` for regex replacement
+- Fix issue with `getFormattedPhone()` argument name.
+- Fix use of `str_replace()` instead of `preg_replace()` for regex replacement.
 
 ## 1.0.5 - 2021-08-24
 
