@@ -15,12 +15,12 @@ class SectionField extends Field
 
     public static function displayName(): string
     {
-        return Craft::t('app', 'Section (Site Module');
+        return Craft::t('app', 'Section (Site Module)');
     }
 
     public function getInputHtml($value, ElementInterface $element = null): string
     {
-        return Craft::$app->getView()->renderTemplate('sitemodule/section-field/_input', [
+        return Craft::$app->getView()->renderTemplate('site-module/section-field/_input', [
             'field'  => $this,
             'value' => $value,
             'options' => $this->getOptions($element),
@@ -40,7 +40,7 @@ class SectionField extends Field
             ];
         }
 
-        return Craft::$app->getView()->renderTemplate('sitemodule/section-field/_settings', [
+        return Craft::$app->getView()->renderTemplate('site-module/section-field/_settings', [
             'field' => $this,
             'options' => $options
         ]);
