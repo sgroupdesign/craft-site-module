@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 - 2022-03-08
+
+- Fix section field template path.
+
 ## 1.0.9 - 2022-03-08
 
 - Add new Section field type.
