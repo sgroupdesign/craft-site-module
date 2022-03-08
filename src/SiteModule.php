@@ -3,6 +3,7 @@ namespace sgroup\sitemodule;
 
 use sgroup\sitemodule\base\Module;
 use sgroup\sitemodule\base\PluginTrait;
+use sgroup\sitemodule\fields\SectionField;
 use sgroup\sitemodule\fieldlayoutelements\Note;
 use sgroup\sitemodule\fieldlayoutelements\Spacer;
 use sgroup\sitemodule\twigextensions\Extension;
@@ -11,8 +12,10 @@ use sgroup\sitemodule\web\assets\CpJs;
 
 use Craft;
 use craft\events\DefineFieldLayoutElementsEvent;
+use craft\events\RegisterComponentTypesEvent;
 use craft\events\TemplateEvent;
 use craft\models\FieldLayout;
+use craft\services\Fields;
 use craft\web\Application;
 use craft\web\twig\variables\CraftVariable;
 use craft\web\View;
@@ -31,6 +34,7 @@ class SiteModule extends Module
         $this->_checkOffline();
         $this->_registerCpJs();
         $this->_registerTwigExtensions();
+        $this->_registerFieldTypes();
         $this->_registerFieldLayoutElements();
 
         // Prevent code from firing too early before Craft is bootstrapped
@@ -68,6 +72,13 @@ class SiteModule extends Module
     private function _registerTwigExtensions()
     {
         Craft::$app->view->registerTwigExtension(new Extension);
+    }
+
+    private function _registerFieldTypes()
+    {
+        Event::on(Fields::class, Fields::EVENT_REGISTER_FIELD_TYPES, function(RegisterComponentTypesEvent $event) {
+            $event->types[] = SectionField::class;
+        });
     }
 
     private function _registerFieldLayoutElements()

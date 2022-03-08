@@ -1,0 +1,18 @@
+{% import '_includes/forms' as forms %}
+
+{{ forms.textField({
+    label : 'Default Text' | t('site-module'),
+    instructions : 'The default text shown in the dropdown when no option is selected.' | t('site-module'),
+    id: 'defaultText',
+    name: 'defaultText',
+    placeholder: 'Select a section'
+}) }}
+
+{{ forms.checkboxGroupField({
+    label : 'Allowed Sections' | t('site-module'),
+    instructions : 'The sections that may be chosen for this field.' | t('site-module'),
+    id : 'whitelistedSections',
+    name : 'whitelistedSections',
+    values: field.whitelistedSections,
+    options : options
+}) }}

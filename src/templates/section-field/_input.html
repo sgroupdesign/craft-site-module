@@ -1,0 +1,8 @@
+{% import '_includes/forms' as forms %}
+
+{{ forms.select({
+    id: field.id,
+    name: field.handle,
+    value: value,
+    options:  options,
+}) }}
