@@ -70,6 +70,10 @@ class Extension extends AbstractExtension
 
     public function getVideo($element, $settings = [])
     {
+        if (!$element) {
+            return null;
+        }
+
         $embed = EmbeddedAssets::$plugin->methods->getEmbeddedAsset($element);
 
         if ($embed) {
@@ -111,6 +115,10 @@ class Extension extends AbstractExtension
 
     public function getImgAttr($image, $transform = null, $lazyload = false, $sizes = 'default')
     {
+        if (!$image) {
+            return null;
+        }
+
         // Set some sane defaults for sizes
         if ($sizes === 'default') {
             $sizes = ['1x', '1.5x', '2x', '3x'];
@@ -154,6 +162,10 @@ class Extension extends AbstractExtension
 
     public function getImg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default')
     {
+        if (!$image) {
+            return null;
+        }
+
         // Get all the generated attributes to make a correct tag
         $attr = $this->getImgAttr($image, $transform, $lazyload, $sizes);
 
@@ -167,6 +179,10 @@ class Extension extends AbstractExtension
 
     public function getBgAttr($image, $transform = null, $lazyload = false, $sizes = 'default')
     {
+        if (!$image) {
+            return null;
+        }
+
         // Set some sane defaults for sizes
         if ($sizes === 'default') {
             $sizes = ['1x', '1.5x', '2x', '3x'];
@@ -206,6 +222,10 @@ class Extension extends AbstractExtension
 
     public function getBg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default')
     {
+        if (!$image) {
+            return null;
+        }
+        
         // Get all the generated attributes to make a correct tag
         $attr = $this->getBgAttr($image, $transform, $lazyload, $sizes);
 
