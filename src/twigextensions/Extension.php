@@ -113,7 +113,7 @@ class Extension extends AbstractExtension
         }
     }
 
-    public function getImgAttr($image, $transform = null, $lazyload = false, $sizes = 'default')
+    public function getImgAttr($image, $transform = null, $lazyload = false, $sizes = 'default', $useFocalPoint = true)
     {
         if (!$image) {
             return null;
@@ -153,21 +153,21 @@ class Extension extends AbstractExtension
             'width' => $image->getWidth(),
             'height' => $image->getHeight(),
             'alt' => $image->title,
-            'style' => ($focalPoint ? [
+            'style' => ($focalPoint && $useFocalPoint ? [
                 'object-fit' => 'cover',
                 'object-position' => ($focalPoint['x'] * 100) . '% ' . ($focalPoint['y'] * 100) . '%',
             ] : null),
         ], $attr);
     }
 
-    public function getImg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default')
+    public function getImg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default', $useFocalPoint = true)
     {
         if (!$image) {
             return null;
         }
 
         // Get all the generated attributes to make a correct tag
-        $attr = $this->getImgAttr($image, $transform, $lazyload, $sizes);
+        $attr = $this->getImgAttr($image, $transform, $lazyload, $sizes, $useFocalPoint);
 
         // Return the defaults + settings above + attributes
         $settings = array_merge_recursive($attr, $attributes);
@@ -177,7 +177,7 @@ class Extension extends AbstractExtension
         return Template::raw($html);
     }
 
-    public function getBgAttr($image, $transform = null, $lazyload = false, $sizes = 'default')
+    public function getBgAttr($image, $transform = null, $lazyload = false, $sizes = 'default', $useFocalPoint = true)
     {
         if (!$image) {
             return null;
@@ -214,20 +214,20 @@ class Extension extends AbstractExtension
 
         // Return the defaults + settings above + attributes
         return array_merge_recursive([
-            'style' => ($focalPoint ? [
+            'style' => ($focalPoint && $useFocalPoint ? [
                 'background-position' => ($focalPoint['x'] * 100) . '% ' . ($focalPoint['y'] * 100) . '%',
             ] : null),
         ], $attr);
     }
 
-    public function getBg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default')
+    public function getBg($image, $transform = null, $lazyload = false, $attributes = [], $sizes = 'default', $useFocalPoint = true)
     {
         if (!$image) {
             return null;
         }
         
         // Get all the generated attributes to make a correct tag
-        $attr = $this->getBgAttr($image, $transform, $lazyload, $sizes);
+        $attr = $this->getBgAttr($image, $transform, $lazyload, $sizes, $useFocalPoint);
 
         // Return the defaults + settings above + attributes
         $settings = array_merge_recursive($attr, $attributes);
