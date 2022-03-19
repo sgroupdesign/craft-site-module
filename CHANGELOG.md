@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1 - 2022-03-19
+
+- Add `useFocalPoint` param to `getImg`, `getBg`, `getVideo` to disable focal point use.
+- Add null-checks for `getImg`, `getBg`, `getVideo` so they don't break when no asset exists.
+
 ## 1.1.0 - 2022-03-08
 
 - Fix section field template path.
