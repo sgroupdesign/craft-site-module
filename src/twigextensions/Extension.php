@@ -3,6 +3,7 @@ namespace sgroup\sitemodule\twigextensions;
 
 use modules\sitemodule\SiteModule;
 
+use craft\helpers\ArrayHelper;
 use craft\helpers\Html;
 use craft\helpers\Template;
 
@@ -169,8 +170,10 @@ class Extension extends AbstractExtension
         // Get all the generated attributes to make a correct tag
         $attr = $this->getImgAttr($image, $transform, $lazyload, $sizes, $useFocalPoint);
 
-        // Return the defaults + settings above + attributes
-        $settings = array_merge_recursive($attr, $attributes);
+        // Return the defaults + settings above + attributes. Ensure we normalise items so they merge properly
+        $attributes = Html::normalizeTagAttributes($attributes);
+        $attr = Html::normalizeTagAttributes($attr);
+        $settings = ArrayHelper::merge($attr, $attributes);
 
         $html = Html::tag('img', '', $settings);
 
@@ -229,8 +232,10 @@ class Extension extends AbstractExtension
         // Get all the generated attributes to make a correct tag
         $attr = $this->getBgAttr($image, $transform, $lazyload, $sizes, $useFocalPoint);
 
-        // Return the defaults + settings above + attributes
-        $settings = array_merge_recursive($attr, $attributes);
+        // Return the defaults + settings above + attributes. Ensure we normalise items so they merge properly
+        $attributes = Html::normalizeTagAttributes($attributes);
+        $attr = Html::normalizeTagAttributes($attr);
+        $settings = ArrayHelper::merge($attr, $attributes);
 
         $html = Html::tag('div', '', $settings);
 
