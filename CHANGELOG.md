@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2 - 2022-04-17
+
+- Add image attribute normalization to ensure attributes are merge correctly.
+
 ## 1.1.1 - 2022-03-19
 
 - Add `useFocalPoint` param to `getImg`, `getBg`, `getVideo` to disable focal point use.
