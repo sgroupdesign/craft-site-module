@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0 - 2022-08-15
+
+### Changed
+- Now requires PHP `8.0.2+`.
+- Now requires Craft `4.0.0+`.
+
 ## 1.1.2 - 2022-04-17
 
 - Add image attribute normalization to ensure attributes are merge correctly.
