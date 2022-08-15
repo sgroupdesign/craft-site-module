@@ -23,7 +23,7 @@ class Note extends BaseUiElement
         return $this->note ?: Craft::t('app', 'Note');
     }
 
-    protected function selectorIcon()
+    protected function selectorIcon(): ?string
     {
         return '@appicons/hash.svg';
     }
@@ -32,7 +32,7 @@ class Note extends BaseUiElement
     // Public Methods
     // =========================================================================
 
-    public function settingsHtml()
+    public function settingsHtml(): ?string
     {
         return Cp::textFieldHtml([
             'label' => Craft::t('app', 'Note'),
@@ -42,7 +42,7 @@ class Note extends BaseUiElement
         ]);
     }
 
-    public function formHtml(ElementInterface $element = null, bool $static = false)
+    public function formHtml(ElementInterface $element = null, bool $static = false): ?string
     {
         return Html::tag('p', Html::encode(Craft::t('site', $this->note)));
     }

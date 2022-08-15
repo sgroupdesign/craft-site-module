@@ -21,7 +21,7 @@ class Spacer extends BaseUiElement
     // Public Methods
     // =========================================================================
 
-    public function settingsHtml()
+    public function settingsHtml(): ?string
     {
         return Cp::textFieldHtml([
             'label' => Craft::t('app', 'Spacer'),
@@ -30,7 +30,7 @@ class Spacer extends BaseUiElement
         ]);
     }
 
-    public function formHtml(ElementInterface $element = null, bool $static = false)
+    public function formHtml(ElementInterface $element = null, bool $static = false): ?string
     {
         return '';
     }
