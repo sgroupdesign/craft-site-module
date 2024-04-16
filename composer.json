@@ -1,7 +1,7 @@
 {
     "name": "sgroup/site-module",
     "description": "A base module for S. projects and other modules to extend from for Craft CMS development.",
-    "version": "2.0.1",
+    "version": "3.0.0",
     "homepage": "https://github.com/sgroupdesign/craft-site-module",
     "license": "MIT",
     "keywords": [
@@ -18,7 +18,7 @@
         "rss": "https://github.com/sgroupdesign/craft-site-module/commits/v2.atom"
     },
     "require": {
-        "craftcms/cms": "^4.0.0",
+        "craftcms/cms": "^5.0.0",
         "yiisoft/yii2": "^2.0.0"
     },
     "autoload": {
