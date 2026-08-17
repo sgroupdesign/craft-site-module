@@ -22,7 +22,7 @@ class Service extends Component
 
             return FileHelper::createUrl($root, $url);
         } catch (\Throwable $e) {
-            SiteModule::error($e->getMessage());
+            Craft::error($e->getMessage());
 
             return $url;
         }
@@ -35,7 +35,7 @@ class Service extends Component
 
             return FileHelper::createUrl($root, $path);
         } catch (\Throwable $e) {
-            SiteModule::error($e->getMessage());
+            Craft::error($e->getMessage());
 
             return $path;
         }
